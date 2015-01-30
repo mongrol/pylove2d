@@ -1,6 +1,21 @@
 import sdl
+import love
+
+window = 0
+renderer = 0
 
 def set_mode(width, height, flags):
+    #create window
     window = sdl.createWindow("Game Window", 0, 0, width, height, 0)
     if (window):
-        return True
+        #create renderer
+        love.window.renderer = sdl.createRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+        if (renderer):
+            sdl.setRenderDrawColor (renderer, 0, 0, 0, 0);
+            sdl.renderClear(renderer)
+            sdl.renderPresent(renderer)
+            print ("renderer cleared")
+            return renderer
+        else:
+            print ("No renderer")
+            return False
