@@ -1,5 +1,6 @@
 import love.event
 import love.graphics
+import love.timer
 import love.window
 
 images = []
@@ -10,9 +11,12 @@ def create_handlers():
     handlers["keypressed"] = keypressed
     handlers["keyreleased"] = keyreleased
 
+    
+# General Calbacks
+
 def draw():
     #draw default love2d screen
-    love.graphics.draw(images[0], None, 0, 0)
+    love.graphics.draw(images[0], None, 50, 50)
 
 def errhand():
     pass
@@ -101,12 +105,12 @@ def run():
                 love.handlers[message.name](message.a, message.b, message.c, message.d)
         love.event.clear()
         
-        '''
+        
         # Update dt, as we'll be passing it to update
         if love.timer:
             love.timer.step()
             dt = love.timer.getDelta()
-'''
+
         # Call update and draw
         if love.update:
             love.update(dt) # will pass 0 if love.timer is disabled
@@ -137,6 +141,33 @@ def update(dt):
     pass
 
 def visible():
+    pass
+
+
+# Joystick Callbacks
+
+def gamepadaxis():
+    pass
+
+def gamepadpressed():
+    pass
+
+def joystickadded():
+    pass
+
+def joystickaxis():
+    pass
+
+def joystickhat():
+    pass
+
+def joystickpressed():
+    pass
+
+def joystickreleased():
+    pass
+
+def joystickremoved():
     pass
 
 
