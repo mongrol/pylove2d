@@ -110,7 +110,8 @@ def run():
         if love.timer:
             love.timer.step()
             dt = love.timer.getDelta()
-
+            print (dt)
+            
         # Call update and draw
         if love.update:
             love.update(dt) # will pass 0 if love.timer is disabled

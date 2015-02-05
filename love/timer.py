@@ -1,3 +1,5 @@
+import time
+
 import sdl
 
 
@@ -35,42 +37,50 @@ def init():
 
 
 def getAverageDelta():
-    pass
+    return averageDelta
+
 
 def getDelta():
-    pass
+    return dt
+
 
 def getFPS():
-    pass
+    return fps
+
 
 def getMicroTime():
     pass
 
+
 def getTime():
-    pass
+    return time.clock_gettime(time.CLOCK_MONOTONIC)
+
 
 def sleep():
     pass
 
-def step():
-    global currTime, prevTime, dt
-    #Frames rendered
 
+def step():
+    global currTime, prevTime, dt, fps, prevFpsUpdate, frames, averageDelta, timeSinceLast
+    #Frames rendered
+    frames = frames + 1
+    
     #"Current" time is previous time by now.
-    prevTime = currTime;
+    prevTime = currTime
 
     #Get time from system.
-    currTime = getTime();
+    currTime = getTime()
 
     #Convert to number of seconds.
-    dt = currTime - prevTime;
+    dt = currTime - prevTime
 
-    timeSinceLast = currTime - prevFpsUpdate;
+    timeSinceLast = currTime - prevFpsUpdate
     #Update FPS?
     if timeSinceLast > fpsUpdateFrequency:
-        fps = int((frames/timeSinceLast) + 0.5);
-        averageDelta = timeSinceLast/frames;
-        prevFpsUpdate = currTime;
-        frames = 0;
+        fps = int((frames/timeSinceLast) + 0.5)
+        averageDelta = timeSinceLast/frames
+        prevFpsUpdate = currTime
+        frames = 0
+
 
 
