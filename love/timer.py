@@ -48,17 +48,14 @@ def getFPS():
     return fps
 
 
-def getMicroTime():
-    pass
-
-
 def getTime():
     return time.clock_gettime(time.CLOCK_MONOTONIC)
 
 
-def sleep():
-    pass
-
+def sleep(seconds):
+    if seconds > 0:
+        sdl.delay(seconds*1000)
+        
 
 def step():
     global currTime, prevTime, dt, fps, prevFpsUpdate, frames, averageDelta, timeSinceLast

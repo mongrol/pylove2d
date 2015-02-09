@@ -4,6 +4,8 @@ import love.timer
 import love.window
 
 images = []
+rot = 0
+
 
 handlers = {}
 def create_handlers():
@@ -16,7 +18,8 @@ def create_handlers():
 
 def draw():
     #draw default love2d screen
-    love.graphics.draw(images[0], None, 50, 50)
+    love.graphics.clear()
+    love.graphics.draw(images[0], None, 50, 50, rot)
 
 def errhand():
     pass
@@ -77,61 +80,58 @@ def run():
         love.math.setRandomSeed(os.time())
     end
     '''
+
     love.load()
-    love.event.pump()
 
-    '''
-    if love.load then love.load(arg) end
+    if love.event:
+        love.event.pump()
 
-    -- We don't want the first frame's dt to include time taken by love.load.
-    if love.timer then love.timer.step() end
-    '''
+    #if love.load then love.load(arg) end
+
+    #We don't want the first frame's dt to include time taken by love.load.
+    if love.timer:
+        love.timer.step()
+
     dt = 0
 
     # Main loop time.
     while running: 
         #pump sdl for all current events and put them in our lovely queue
-        love.event.pump()
+        if love.event:
+            love.event.pump()
 
-        for message in love.event.poll():
-            print (message, message.name)
-            if message.name == "quit":
-                running = False
-                if not love.quit or not love.quit():
-                    if love.audio:
-                        love.audio.stop()
-                        return
-            if message.name != 0:
-                love.handlers[message.name](message.a, message.b, message.c, message.d)
+            for message in love.event.poll():
+                print (message, message.name)
+                if message.name == "quit":
+                    running = False
+                    if not love.quit or not love.quit():
+                        if love.audio:
+                            love.audio.stop()
+                            return
+                if message.name != 0:
+                    love.handlers[message.name](message.a, message.b, message.c, message.d)
         love.event.clear()
-        
         
         # Update dt, as we'll be passing it to update
         if love.timer:
             love.timer.step()
             dt = love.timer.getDelta()
-            print (dt)
             
         # Call update and draw
         if love.update:
             love.update(dt) # will pass 0 if love.timer is disabled
 
-            
         if love.window and love.graphics:# and love.window.isCreated():
             love.graphics.clear()
-#            love.graphics.origin()
-
-        if love.draw:
-            love.draw()
-
-'''
+            love.graphics.origin()
+            if love.draw:
+                love.draw()
             love.graphics.present()
-
-
+'''
         if love.timer:
             love.timer.sleep(0.001)
-        '''
-
+'''            
+                
 def textinput():
     pass
 
@@ -139,8 +139,10 @@ def threaderror():
     pass
 
 def update(dt):
-    pass
-
+    global rot
+    rot = rot + (2 * dt)
+    print (rot)
+    
 def visible():
     pass
 
