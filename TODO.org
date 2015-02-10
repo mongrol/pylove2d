@@ -1,0 +1,225 @@
+
+* [0%] Love
+*Types*
+- [ ] Data	The superclass of all data.		
+- [ ] Object	The superclass of all LÖVE types.
+
+*Callbacks*
+- [ ] Config Files	Game configuration settings.		
+- [ ] love.draw	Callback function used to draw on the screen every frame.		
+- [ ] love.errhand	The error handler, used to display error messages.		
+- [ ] love.focus	Callback function triggered when window receives or loses focus.	0.7.0	
+- [ ] love.keypressed	Callback function triggered when a key is pressed.		
+- [ ] love.keyreleased	Callback function triggered when a key is released.		
+- [ ] love.load	This function is called exactly once at the beginning of the game.		
+- [ ] love.mousefocus	Callback function triggered when window receives or loses mouse focus.	0.9.0	
+- [ ] love.mousepressed	Callback function triggered when a mouse button is pressed.		
+- [ ] love.mousereleased	Callback function triggered when a mouse button is released.		
+- [ ] love.quit	Callback function triggered when the game is closed.	0.7.0	
+- [ ] love.resize	Called when the window is resized.	0.9.0	
+- [ ] love.run	The main function, containing the main loop. A sensible default is used when left out.		
+- [ ] love.textinput	Called when text has been entered by the user.	0.9.0	
+- [ ] love.threaderror	Callback function triggered when a Thread encounters an error.	0.9.0	
+- [ ] love.update	Callback function used to update the state of the game every frame.		
+- [ ] love.visible	Callback function triggered when window is shown or hidden.	0.9.0	
+- [ ] Joystick
+- [ ] 
+- [ ] love.gamepadaxis	Called when a Joystick's virtual gamepad axis is moved.	0.9.0	
+- [ ] love.gamepadpressed	Called when a Joystick's virtual gamepad button is pressed.	0.9.0	
+- [ ] love.gamepadreleased	Called when a Joystick's virtual gamepad button is released.	0.9.0	
+- [ ] love.joystickadded	Called when a Joystick is connected.	0.9.0	
+- [ ] love.joystickaxis	Called when a joystick axis moves.	0.9.0	
+- [ ] love.joystickhat	Called when a joystick hat direction changes.	0.9.0	
+- [ ] love.joystickpressed	Called when a joystick button is pressed.		
+- [ ] love.joystickreleased	Called when a joystick button is released.		
+- [ ] love.joystickremoved	Called when a Joystick is disconnected.
+
+*Functions*
+- [ ] love.getVersion	Gets the current running version of LÖVE.
+
+* [71%] love.event
+*Functions*
+- [X] love.event.clear	Clears the event queue.	0.7.2	
+- [X] love.event.poll	Returns an iterator for messages in the event queue.		
+- [X] love.event.pump	Pump events into the event queue.		
+- [X] love.event.push	Adds an event to the event queue.		
+- [ ] love.event.quit	Exits the LÖVE program.	0.8.0	
+- [ ] love.event.wait	Like love.event.poll(), but blocks until there is an event in the queue.
+
+*Enums*
+- [X] Event	Arguments to love.event.push() and the like.
+
+
+
+* [4%] love.graphics
+*Types*
+- [ ] Canvas	Off-screen render target.	0.8.0	
+- [X] Drawable	Superclass for all things that can be drawn on screen.		
+- [ ] Font	Defines the shape of characters than can be drawn onto the screen.		
+- [ ] Framebuffer	Off-screen render target.	0.7.0	0.8.0
+- [X] Image	Drawable image type.		
+- [ ] Mesh	A 2D polygon mesh used for drawing arbitrary textured shapes.	0.9.0	
+- [ ] ParticleSystem	Used to create cool effects, like fire.		
+- [ ] PixelEffect	Pixel shader effect.	0.8.0	0.9.0
+- [X] Quad	A quadrilateral with texture coordinate information.		
+- [ ] Shader	Shader effect.	0.9.0	
+- [ ] SpriteBatch	Store image positions in a buffer, and draw it in one call.		
+- [X] Texture	Superclass for drawable objects which represent a texture.	0.9.1	
+
+*Functions*
+- [ ] love.graphics.arc	Draws an arc.	0.8.0	
+- [ ] love.graphics.circle	Draws a circle.		
+- [ ] love.graphics.clear	Clears the screen to background color.		
+- [X] love.graphics.draw	Draws objects on screen.		
+- [ ] love.graphics.drawq	Draw a Quad with the specified Image on screen.		0.9.0
+- [ ] love.graphics.line	Draws lines between points.		
+- [ ] love.graphics.point	Draws a point.		
+- [ ] love.graphics.polygon	Draw a polygon.		
+- [ ] love.graphics.present	Displays the results of drawing operations on the screen.		
+- [ ] love.graphics.print	Draws text on screen. If no Font is set, one will be created and set (once) if needed.		
+- [ ] love.graphics.printf	Draws formatted text, with word wrap and alignment.		
+- [ ] love.graphics.quad	Draws a quadrilateral shape.		0.9.0
+- [ ] love.graphics.rectangle	Draws a rectangle.		
+- [ ] love.graphics.triangle	Draws a triangle.
+
+*Object Creation*
+- [ ] love.graphics.newCanvas	Creates a new Canvas.	0.8.0	
+- [ ] love.graphics.newFont	Creates a new Font.		
+- [ ] love.graphics.newFramebuffer	Creates a new Framebuffer.	0.7.0	0.8.0
+- [X] love.graphics.newImage	Creates a new Image.		
+- [ ] love.graphics.newImageFont	Creates a new Font by loading a specifically formatted image.	0.2.0	
+- [ ] love.graphics.newMesh	Creates a new Mesh.	0.9.0	
+- [ ] love.graphics.newParticleSystem	Creates a new ParticleSystem.		
+- [ ] love.graphics.newPixelEffect	Creates a new PixelEffect.	0.8.0	0.9.0
+- [ ] love.graphics.newQuad	Creates a new Quad.		
+- [ ] love.graphics.newScreenshot	Creates a screenshot and returns the ImageData.		
+- [ ] love.graphics.newShader	Creates a new Shader.	0.9.0	
+- [ ] love.graphics.newSpriteBatch	Creates a new SpriteBatch.		
+- [ ] love.graphics.newStencil	Creates a new stencil.	0.8.0	0.9.0
+- [ ] love.graphics.setNewFont	Creates and sets a new Font.	0.8.0	
+
+*Graphics State*
+- [ ] love.graphics.getBackgroundColor	Gets the current background color.		
+- [ ] love.graphics.getBlendMode	Gets the blending mode.	0.2.0	
+- [ ] love.graphics.getCanvas	Returns the current target Canvas.	0.8.0	
+- [ ] love.graphics.getColor	Gets the current color.		
+- [ ] love.graphics.getColorMask	Gets the active color components used when drawing.	0.9.0	
+- [ ] love.graphics.getColorMode	Gets the color mode (which controls how images are affected by the current color).	0.2.0	0.9.0
+- [ ] love.graphics.getDefaultFilter	Returns the default scaling filters used with Images, Canvases, and Fonts.	0.9.0	
+- [ ] love.graphics.getDefaultImageFilter	Returns the default scaling filters.	0.8.0	0.9.0
+- [ ] love.graphics.getFont	Gets the current Font object.		
+- [ ] love.graphics.getLineJoin	Gets the line join style.		
+- [ ] love.graphics.getLineStipple	Gets the current line stipple.		0.8.0
+- [ ] love.graphics.getLineStyle	Gets the line style.		
+- [ ] love.graphics.getLineWidth	Gets the current line width.		
+- [ ] love.graphics.getMaxImageSize	Gets the max supported width or height of Images and Canvases.	0.9.0	
+- [ ] love.graphics.getMaxPointSize	Gets the max supported point size.		
+- [ ] love.graphics.getPixelEffect	Returns the current PixelEffect.	0.8.0	0.9.0
+- [ ] love.graphics.getPointSize	Gets the point size.		
+- [ ] love.graphics.getPointStyle	Gets the current point style.		
+- [ ] love.graphics.getRendererInfo	Gets information about the system's video card and drivers.	0.9.0	
+- [ ] love.graphics.getScissor	Gets the current scissor box.	0.4.0	
+- [ ] love.graphics.getShader	Gets the current Shader.	0.9.0	
+- [ ] love.graphics.getSystemLimit	Gets the system-dependent maximum value for a love.graphics feature.	0.9.1	
+- [ ] love.graphics.isSupported	Checks for the support of graphics related functions.	0.8.0	
+- [ ] love.graphics.isWireframe	Gets whether wireframe mode is used when drawing.	0.9.1	
+- [ ] love.graphics.reset	Resets the current graphics settings.		
+- [ ] love.graphics.setBackgroundColor	Sets the background color.		
+- [ ] love.graphics.setBlendMode	Sets the blending mode.	0.2.0	
+- [ ] love.graphics.setCanvas	Captures drawing operations to a Canvas	0.8.0	
+- [ ] love.graphics.setColor	Sets the color used for drawing.		
+- [ ] love.graphics.setColorMask	Sets the color mask. Enables or disables specific color components when rendering.	0.9.0	
+- [ ] love.graphics.setColorMode	Sets the color mode (which controls how images are affected by the current color).	0.2.0	0.9.0
+- [ ] love.graphics.setDefaultFilter	Sets the default scaling filters used with Images, Canvases, and Fonts.	0.9.0	
+- [ ] love.graphics.setDefaultImageFilter	Sets the default scaling filters.	0.8.0	0.9.0
+- [ ] love.graphics.setFont	Set an already-loaded Font as the current font.		
+- [ ] love.graphics.setInvertedStencil	Defines an inverted stencil.	0.8.0	
+- [ ] love.graphics.setLine	Sets the line width and style.		0.9.0
+- [ ] love.graphics.setLineJoin	Sets the line join style.		
+- [ ] love.graphics.setLineStipple	Sets the line stipple pattern.		0.8.0
+- [ ] love.graphics.setLineStyle	Sets the line style.		
+- [ ] love.graphics.setLineWidth	Sets the line width.		
+- [ ] love.graphics.setPixelEffect	Routes drawing operations through a pixel shader.	0.8.0	0.9.0
+- [ ] love.graphics.setPoint	Sets the point size and style.		0.9.0
+- [ ] love.graphics.setPointSize	Sets the point size.		
+- [ ] love.graphics.setPointStyle	Sets the point style.		
+- [ ] love.graphics.setRenderTarget	Captures drawing operations to a Framebuffer	0.7.0	0.8.0
+- [ ] love.graphics.setScissor	Sets or disables scissor.	0.4.0	
+- [ ] love.graphics.setShader	Routes drawing operations through a shader.	0.9.0	
+- [ ] love.graphics.setStencil	Defines or releases a stencil.	0.8.0	
+- [ ] love.graphics.setWireframe	Sets whether wireframe lines will be used when drawing.	0.9.1	
+
+*Coordinate System*
+- [ ] love.graphics.origin	Resets the current coordinate transformation.	0.9.0	
+- [ ] love.graphics.pop	Pops the current coordinate transformation from the transformation stack.		
+- [ ] love.graphics.push	Copies and pushes the current coordinate transformation to the transformation stack.		
+- [ ] love.graphics.rotate	Rotates the coordinate system in two dimensions.		
+- [ ] love.graphics.scale	Scales the coordinate system in two dimensions.		
+- [ ] love.graphics.shear	Shears the coordinate system.	0.8.0	
+- [ ] love.graphics.translate	Translates the coordinate system in two dimensions.		
+
+*Window*
+- [ ] love.graphics.checkMode	Checks if a display mode is supported.		0.9.0
+- [ ] love.graphics.getCaption	Gets the window caption.		0.9.0
+- [ ] love.graphics.getDimensions	Gets the width and height of the window.	0.9.0	
+- [ ] love.graphics.getHeight	Gets the height in pixels of the window.		
+- [ ] love.graphics.getMode	Returns the current display mode.	0.8.0	0.9.0
+- [ ] love.graphics.getModes	Gets a list of supported fullscreen modes.		0.9.0
+- [ ] love.graphics.getWidth	Gets the width in pixels of the window.		
+- [ ] love.graphics.hasFocus	Checks if the game window has keyboard focus.	0.8.0	0.9.0
+- [ ] love.graphics.isCreated	Checks if the display has been set.		0.9.0
+- [ ] love.graphics.setCaption	Sets the window caption.		0.9.0
+- [ ] love.graphics.setIcon	Set window icon.	0.7.0	0.9.0
+- [ ] love.graphics.setMode	Changes the display mode.		0.9.0
+- [ ] love.graphics.toggleFullscreen	Toggles fullscreen.
+
+*Enums*
+- [ ] AlignMode	Text alignment.		
+- [ ] BlendMode	Different ways you do alpha blending.	0.2.0	
+- [ ] ColorMode	Controls how drawn images are affected by current color.	0.2.0	0.9.0
+- [ ] DrawMode	Controls whether shapes are drawn as an outline, or filled.		
+- [ ] FilterMode	How the image is filtered when scaling.		
+- [ ] GraphicsFeature	Graphics features that can be checked for with love.graphics.isSupported.	0.8.0	
+- [ ] GraphicsLimit	Types of system-dependent graphics limits.	0.9.1	
+- [ ] LineJoin	Line join style.		
+- [ ] LineStyle	The styles in which lines are drawn.		
+- [ ] MeshDrawMode	How a Mesh's vertices are used when drawing.	0.9.0	
+- [ ] PointStyle	How points should be drawn.		
+- [ ] SpriteBatchUsage	Usage hints for SpriteBatches.	0.8.0	
+- [ ] TextureFormat	Controls the canvas texture format.	0.9.0	
+- [ ] WrapMode	How the image wraps inside a large Quad.
+
+
+* [66%] love.timer
+*functions*
+- [ ] love.timer.getAverageDelta	Returns the average delta time over the last second.	0.9.0	
+- [X] love.timer.getDelta	Returns the time between the last two frames.		
+- [X] love.timer.getFPS	Returns the current frames per second.		
+- [X] love.timer.getTime	Returns the amount of time since some time in the past.		
+- [ ] love.timer.sleep	Pauses the current thread for the specified amount of time.		
+- [X] love.timer.step	Measures the time between two frames.
+
+* [0%] love.window
+*Functions*
+- [ ] love.window.getDesktopDimensions	Gets the width and height of the desktop.	0.9.0	
+- [ ] love.window.getDimensions	Gets the width and height of the window.	0.9.0	
+- [ ] love.window.getDisplayCount	Gets the number of connected monitors.	0.9.0	
+- [ ] love.window.getFullscreen	Gets whether the window is fullscreen.	0.9.0	
+- [ ] love.window.getFullscreenModes	Gets a list of supported fullscreen modes.	0.9.0	
+- [ ] love.window.getHeight	Gets the height of the window.	0.9.0	
+- [ ] love.window.getIcon	Gets the window icon.	0.9.0	
+- [ ] love.window.getMode	Returns the current display mode.	0.9.0	
+- [ ] love.window.getPixelScale	Gets the scale factor associated with the window.	0.9.1	
+- [ ] love.window.getTitle	Gets the window title.	0.9.0	
+- [ ] love.window.getWidth	Gets the width of the window.	0.9.0	
+- [ ] love.window.hasFocus	Checks if the game window has keyboard focus.	0.9.0	
+- [ ] love.window.hasMouseFocus	Checks if the game window has mouse focus.	0.9.0	
+- [ ] love.window.isCreated	Checks if the window has been created.	0.9.0	
+- [ ] love.window.isVisible	Checks if the game window is visible.	0.9.0	
+- [ ] love.window.setFullscreen	Enters or exits fullscreen.	0.9.0	
+- [ ] love.window.setIcon	Sets the window icon.	0.9.0	
+- [-] love.window.setMode	Changes the display mode.	0.9.0	
+- [ ] love.window.setTitle	Sets the window title.	0.9.0
+
+*Enums*
+- [ ] FullscreenType	Types of fullscreen modes.
