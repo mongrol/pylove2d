@@ -19,16 +19,19 @@ def clear():
 
 def draw(image, quad=None, x=0, y=0, r=0, sx=1, sy=1, ox=0, oy=0):
     src_rect = sdl.Rect((0,0,image.getWidth(), image.getHeight()))
-    dest_rect = sdl.Rect((x,y,image.getWidth() * sx, image.getHeight() * sy))
+    dest_rect = sdl.Rect((x,y,image.getWidth() * sx,
+                          image.getHeight() * sy))
     center = sdl.Point((ox, oy))
     angle = math.degrees(r)
-    sdl.renderCopyEx(love.window.renderer, image._texture, src_rect, dest_rect, angle, center, 0)
+    sdl.renderCopyEx(love.window.renderer, image._texture, src_rect,
+                     dest_rect, angle, center, 0)
 
 
 def newImage( filename ):
     img = Image()
     surface = sdl.image.load(filename)
-    texture = sdl.createTextureFromSurface(love.window.renderer, surface)
+    texture = sdl.createTextureFromSurface(love.window.renderer,
+                                           surface)
     img.setData(texture)
     img.setWidth(surface.w)
     img.setHeight(surface.h)

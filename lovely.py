@@ -1,3 +1,5 @@
+#gpl
+
 
 import love
 
@@ -7,7 +9,7 @@ import love
 def draw():
 	#draw stuff
 
-#Then redefine the love modules default callbacks
+#Then redefine the love modules default callbacks with your owns
 
 love.draw = draw
 

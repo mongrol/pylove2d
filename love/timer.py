@@ -58,7 +58,8 @@ def sleep(seconds):
         
 
 def step():
-    global currTime, prevTime, dt, fps, prevFpsUpdate, frames, averageDelta, timeSinceLast
+    global currTime, prevTime, dt, fps, prevFpsUpdate, frames
+    global averageDelta, timeSinceLast
     #Frames rendered
     frames = frames + 1
     

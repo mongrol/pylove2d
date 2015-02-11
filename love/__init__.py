@@ -88,7 +88,7 @@ def run():
 
     #if love.load then love.load(arg) end
 
-    #We don't want the first frame's dt to include time taken by love.load.
+    #don't want the first frame's dt to include time taken by love.load.
     if love.timer:
         love.timer.step()
 
@@ -96,7 +96,7 @@ def run():
 
     # Main loop time.
     while running: 
-        #pump sdl for all current events and put them in our lovely queue
+        #pump sdl for all current events and put them in our queue
         if love.event:
             love.event.pump()
 
@@ -109,7 +109,8 @@ def run():
                             love.audio.stop()
                             return
                 if message.name != 0:
-                    love.handlers[message.name](message.a, message.b, message.c, message.d)
+                    love.handlers[message.name](message.a, message.b,
+                                                message.c, message.d)
         love.event.clear()
         
         # Update dt, as we'll be passing it to update
@@ -172,17 +173,3 @@ def joystickreleased():
 
 def joystickremoved():
     pass
-
-
-'''
-boot.lua contains boot(), init(), run()
-1. Boot() - Load game file and decide if game or nogame. Assume no game for now
-2. init() - Setup screen.
-3. run() - Loop
-'''
-
-
-
-
-
-
