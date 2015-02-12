@@ -11,7 +11,6 @@ class Message:
         self.c = c
         self.d = d
     
-    
 
 def clear():
     #clear the queue
@@ -20,7 +19,7 @@ def clear():
 def poll():
     #returns iterator for the queue
     return queue.__iter__()
-    pass
+
 
 def pump():
     #called by love.run()
@@ -31,14 +30,21 @@ def pump():
 
     sdl_event = sdl.Event()
     while (sdl.pollEvent(sdl_event)):
+        msg = Message()
 #        ("sdl_event.type: ", sdl_event.type)
         if sdl_event.type == sdl.KEYDOWN:
             keyname = sdl.getKeyName(sdl_event.key.keysym.sym)
+            msg = convert(sdl_event)
             print ("Keypressed", keyname)
         if sdl_event.type == sdl.KEYUP:
             keyname = sdl.getKeyName(sdl_event.key.keysym.sym)
-            print ("Keyreleased", keyname)
-        queue.append(convert(sdl_event))
+            msg = convert(sdl_event)
+        if sdl_event.type == sdl.WINDOWEVENT:
+            if sdl_event.window.event == sdl.WINDOWEVENT_FOCUS_GAINED:
+                msg.name = "focus"
+                msg.a = sdl_event.window.windowID
+                print ("window focus event")
+        queue.append(msg)
 
 def push():
     #pushes message onto queue
@@ -62,14 +68,10 @@ def convert(event):
         msg.name = "keypressed"
         keys = createKeyMap()
         msg.a = keys[event.key.keysym.sym]
-        #print (event.key.keysym.sym)
-        print ("pressed key", msg.a)
     elif event.type == sdl.KEYUP:
         msg.name = "keyreleased"
         keys = createKeyMap()
         msg.a = keys[event.key.keysym.sym]
-        #print (event.key.keysym.sym)
-        print ("released key", msg.a)
     return msg
 
 def createKeyMap():
@@ -80,106 +82,114 @@ def createKeyMap():
     k[sdl.K_UNKNOWN] = 0
     k[sdl.K_ESCAPE] = "escape"
     k[sdl.K_SPACE] = "space"
+
+    k[sdl.K_BACKSPACE] = "backspace"
+    k[sdl.K_TAB] = "tab"
+    k[sdl.K_EXCLAIM] = "!"
+    k[sdl.K_QUOTEDBL] = '"'
+    k[sdl.K_HASH] = "#"
+    k[sdl.K_DOLLAR] = "$"
+    k[sdl.K_AMPERSAND] = "%"
+    k[sdl.K_QUOTE] = "'"
+    k[sdl.K_LEFTPAREN] = "{"
+    k[sdl.K_RIGHTPAREN] = "}"
+    k[sdl.K_ASTERISK] = "*"
+    k[sdl.K_PLUS] = "+"
+    k[sdl.K_COMMA] = ","
+    k[sdl.K_MINUS] = "-"
+    k[sdl.K_PERIOD] = "."
+    k[sdl.K_SLASH] = "/"
+    k[sdl.K_0] = "0"
+    k[sdl.K_1] = "1"
+    k[sdl.K_2] = "2"
+    k[sdl.K_3] = "3"
+    k[sdl.K_4] = "4"
+    k[sdl.K_5] = "5"
+    k[sdl.K_6] = "6"
+    k[sdl.K_7] = "7"
+    k[sdl.K_8] = "8"
+    k[sdl.K_9] = "9"
+    k[sdl.K_COLON] = ":"
+    k[sdl.K_SEMICOLON] = ";"
+    k[sdl.K_LESS] = "<"
+    k[sdl.K_EQUALS] = "="
+    k[sdl.K_GREATER] = ">"
+    k[sdl.K_QUESTION] = "?"
+    k[sdl.K_AT] = "@"
+    k[sdl.K_LEFTBRACKET] = "("
+    k[sdl.K_BACKSLASH] = "\\"
+    k[sdl.K_RIGHTBRACKET] = ")"
+    k[sdl.K_CARET] = "^"
+    k[sdl.K_UNDERSCORE] = "_"
+    k[sdl.K_BACKQUOTE] = "`"
+    k[sdl.K_a] = "a"
+    k[sdl.K_b] = "b"
+    k[sdl.K_c] = "c"
+    k[sdl.K_d] = "d"
+    k[sdl.K_e] = "c"
+    k[sdl.K_f] = "f"
+    k[sdl.K_g] = "g"
+    k[sdl.K_h] = "h"
+    k[sdl.K_i] = "i"
+    k[sdl.K_j] = "j"
+    k[sdl.K_k] = "k"
+    k[sdl.K_l] = "l"
+    k[sdl.K_m] = "m"
+    k[sdl.K_n] = "n"
+    k[sdl.K_o] = "o"
+    k[sdl.K_p] = "p"
+    k[sdl.K_q] = "q"
+    k[sdl.K_r] = "r"
+    k[sdl.K_s] = "s"
+    k[sdl.K_t] = "t"
+    k[sdl.K_u] = "u"
+    k[sdl.K_v] = "v"
+    k[sdl.K_w] = "w"
+    k[sdl.K_x] = "x"
+    k[sdl.K_y] = "y"
+    k[sdl.K_z] = "z"
+
+    k[sdl.K_CAPSLOCK] = "capslock"
     
+    k[sdl.K_F1] = "f1"
+    k[sdl.K_F2] = "f2"
+    k[sdl.K_F3] = "f3"
+    k[sdl.K_F4] = "f4"
+    k[sdl.K_F5] = "f5"
+    k[sdl.K_F6] = "f6"
+    k[sdl.K_F7] = "f7"
+    k[sdl.K_F8] = "f8"
+    k[sdl.K_F9] = "f9"
+    k[sdl.K_F10] = "f10"
+    k[sdl.K_F11] = "f11"
+    k[sdl.K_F12] = "f12"
+
+    k[sdl.K_PRINTSCREEN] = "printscreen"
+    k[sdl.K_SCROLLLOCK] = "scrolllock"
+    k[sdl.K_PAUSE] = "pause"
+    k[sdl.K_INSERT] = "insert"
+    k[sdl.K_HOME] = "home"
+    k[sdl.K_PAGEUP] = "pageup"
+    k[sdl.K_DELETE] = "delete"
+    k[sdl.K_END] = "end"
+    k[sdl.K_PAGEDOWN] = "pagedown"
+    k[sdl.K_RIGHT] = "right"
+    k[sdl.K_LEFT] = "left"
+    k[sdl.K_DOWN] = "down"
+    k[sdl.K_UP] = "up"
+
+    k[sdl.K_LCTRL] = "lctrl"
+    k[sdl.K_LSHIFT] = "lshift"
+    k[sdl.K_LALT] = "lalt"
+    k[sdl.K_LGUI] = "lgui"
+    k[sdl.K_RCTRL] = "rctrl"
+    k[sdl.K_RSHIFT] = "rshift"
+    k[sdl.K_RALT] = "ralt"
+    k[sdl.K_RGUI] = "rgui"
+
     return k
 
     '''
-	k[sdl.K_BACKSPACE] = Keyboard::KEY_BACKSPACE
-	k[sdl.K_TAB] = Keyboard::KEY_TAB
-	k[sdl.K_EXCLAIM] = Keyboard::KEY_EXCLAIM
-	k[sdl.K_QUOTEDBL] = Keyboard::KEY_QUOTEDBL
-	k[sdl.K_HASH] = Keyboard::KEY_HASH
-	k[sdl.K_DOLLAR] = Keyboard::KEY_DOLLAR
-	k[sdl.K_AMPERSAND] = Keyboard::KEY_AMPERSAND
-	k[sdl.K_QUOTE] = Keyboard::KEY_QUOTE
-	k[sdl.K_LEFTPAREN] = Keyboard::KEY_LEFTPAREN
-	k[sdl.K_RIGHTPAREN] = Keyboard::KEY_RIGHTPAREN
-	k[sdl.K_ASTERISK] = Keyboard::KEY_ASTERISK
-	k[sdl.K_PLUS] = Keyboard::KEY_PLUS
-	k[sdl.K_COMMA] = Keyboard::KEY_COMMA
-	k[sdl.K_MINUS] = Keyboard::KEY_MINUS
-	k[sdl.K_PERIOD] = Keyboard::KEY_PERIOD
-	k[sdl.K_SLASH] = Keyboard::KEY_SLASH
-	k[sdl.K_0] = Keyboard::KEY_0
-	k[sdl.K_1] = Keyboard::KEY_1
-	k[sdl.K_2] = Keyboard::KEY_2
-	k[sdl.K_3] = Keyboard::KEY_3
-	k[sdl.K_4] = Keyboard::KEY_4
-	k[sdl.K_5] = Keyboard::KEY_5
-	k[sdl.K_6] = Keyboard::KEY_6
-	k[sdl.K_7] = Keyboard::KEY_7
-	k[sdl.K_8] = Keyboard::KEY_8
-	k[sdl.K_9] = Keyboard::KEY_9
-	k[sdl.K_COLON] = Keyboard::KEY_COLON
-	k[sdl.K_SEMICOLON] = Keyboard::KEY_SEMICOLON
-	k[sdl.K_LESS] = Keyboard::KEY_LESS
-	k[sdl.K_EQUALS] = Keyboard::KEY_EQUALS
-	k[sdl.K_GREATER] = Keyboard::KEY_GREATER
-	k[sdl.K_QUESTION] = Keyboard::KEY_QUESTION
-	k[sdl.K_AT] = Keyboard::KEY_AT
-
-	k[sdl.K_LEFTBRACKET] = Keyboard::KEY_LEFTBRACKET
-	k[sdl.K_BACKSLASH] = Keyboard::KEY_BACKSLASH
-	k[sdl.K_RIGHTBRACKET] = Keyboard::KEY_RIGHTBRACKET
-	k[sdl.K_CARET] = Keyboard::KEY_CARET
-	k[sdl.K_UNDERSCORE] = Keyboard::KEY_UNDERSCORE
-	k[sdl.K_BACKQUOTE] = Keyboard::KEY_BACKQUOTE
-	k[sdl.K_a] = Keyboard::KEY_A
-	k[sdl.K_b] = Keyboard::KEY_B
-	k[sdl.K_c] = Keyboard::KEY_C
-	k[sdl.K_d] = Keyboard::KEY_D
-	k[sdl.K_e] = Keyboard::KEY_E
-	k[sdl.K_f] = Keyboard::KEY_F
-	k[sdl.K_g] = Keyboard::KEY_G
-	k[sdl.K_h] = Keyboard::KEY_H
-	k[sdl.K_i] = Keyboard::KEY_I
-	k[sdl.K_j] = Keyboard::KEY_J
-	k[sdl.K_k] = Keyboard::KEY_K
-	k[sdl.K_l] = Keyboard::KEY_L
-	k[sdl.K_m] = Keyboard::KEY_M
-	k[sdl.K_n] = Keyboard::KEY_N
-	k[sdl.K_o] = Keyboard::KEY_O
-	k[sdl.K_p] = Keyboard::KEY_P
-	k[sdl.K_q] = Keyboard::KEY_Q
-	k[sdl.K_r] = Keyboard::KEY_R
-	k[sdl.K_s] = Keyboard::KEY_S
-	k[sdl.K_t] = Keyboard::KEY_T
-	k[sdl.K_u] = Keyboard::KEY_U
-	k[sdl.K_v] = Keyboard::KEY_V
-	k[sdl.K_w] = Keyboard::KEY_W
-	k[sdl.K_x] = Keyboard::KEY_X
-	k[sdl.K_y] = Keyboard::KEY_Y
-	k[sdl.K_z] = Keyboard::KEY_Z
-
-	k[sdl.K_CAPSLOCK] = Keyboard::KEY_CAPSLOCK
-
-	k[sdl.K_F1] = Keyboard::KEY_F1
-	k[sdl.K_F2] = Keyboard::KEY_F2
-	k[sdl.K_F3] = Keyboard::KEY_F3
-	k[sdl.K_F4] = Keyboard::KEY_F4
-	k[sdl.K_F5] = Keyboard::KEY_F5
-	k[sdl.K_F6] = Keyboard::KEY_F6
-	k[sdl.K_F7] = Keyboard::KEY_F7
-	k[sdl.K_F8] = Keyboard::KEY_F8
-	k[sdl.K_F9] = Keyboard::KEY_F9
-	k[sdl.K_F10] = Keyboard::KEY_F10
-	k[sdl.K_F11] = Keyboard::KEY_F11
-	k[sdl.K_F12] = Keyboard::KEY_F12
-
-	k[sdl.K_PRINTSCREEN] = Keyboard::KEY_PRINTSCREEN
-	k[sdl.K_SCROLLLOCK] = Keyboard::KEY_SCROLLLOCK
-	k[sdl.K_PAUSE] = Keyboard::KEY_PAUSE
-	k[sdl.K_INSERT] = Keyboard::KEY_INSERT
-	k[sdl.K_HOME] = Keyboard::KEY_HOME
-	k[sdl.K_PAGEUP] = Keyboard::KEY_PAGEUP
-	k[sdl.K_DELETE] = Keyboard::KEY_DELETE
-	k[sdl.K_END] = Keyboard::KEY_END
-	k[sdl.K_PAGEDOWN] = Keyboard::KEY_PAGEDOWN
-	k[sdl.K_RIGHT] = Keyboard::KEY_RIGHT
-	k[sdl.K_LEFT] = Keyboard::KEY_LEFT
-	k[sdl.K_DOWN] = Keyboard::KEY_DOWN
-	k[sdl.K_UP] = Keyboard::KEY_UP
-
 	k[sdl.K_NUMLOCKCLEAR] = Keyboard::KEY_NUMLOCKCLEAR
 	k[sdl.K_KP_DIVIDE] = Keyboard::KEY_KP_DIVIDE
 	k[sdl.K_KP_MULTIPLY] = Keyboard::KEY_KP_MULTIPLY
@@ -245,14 +255,6 @@ def createKeyMap():
 	k[sdl.K_CURRENCYUNIT] = Keyboard::KEY_CURRENCYUNIT
 	k[sdl.K_CURRENCYSUBUNIT] = Keyboard::KEY_CURRENCYSUBUNIT
 
-	k[sdl.K_LCTRL] = Keyboard::KEY_LCTRL
-	k[sdl.K_LSHIFT] = Keyboard::KEY_LSHIFT
-	k[sdl.K_LALT] = Keyboard::KEY_LALT
-	k[sdl.K_LGUI] = Keyboard::KEY_LGUI
-	k[sdl.K_RCTRL] = Keyboard::KEY_RCTRL
-	k[sdl.K_RSHIFT] = Keyboard::KEY_RSHIFT
-	k[sdl.K_RALT] = Keyboard::KEY_RALT
-	k[sdl.K_RGUI] = Keyboard::KEY_RGUI
 
 	k[sdl.K_MODE] = Keyboard::KEY_MODE
 

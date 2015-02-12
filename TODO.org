@@ -1,29 +1,27 @@
 
-* [0%] Love
+* [20%] Love
 *Types*
-- [ ] Data	The superclass of all data.		
-- [ ] Object	The superclass of all LÖVE types.
+- [X] Data	The superclass of all data.		
+- [X] Object	The superclass of all LÖVE types.
 
 *Callbacks*
 - [ ] Config Files	Game configuration settings.		
-- [ ] love.draw	Callback function used to draw on the screen every frame.		
+- [X] love.draw	Callback function used to draw on the screen every frame.		
 - [ ] love.errhand	The error handler, used to display error messages.		
-- [ ] love.focus	Callback function triggered when window receives or loses focus.	0.7.0	
-- [ ] love.keypressed	Callback function triggered when a key is pressed.		
-- [ ] love.keyreleased	Callback function triggered when a key is released.		
-- [ ] love.load	This function is called exactly once at the beginning of the game.		
+- [X] love.focus	Callback function triggered when window receives or loses focus.	0.7.0	
+- [-] love.keypressed	Callback function triggered when a key is pressed.		
+- [-] love.keyreleased	Callback function triggered when a key is released.		
+- [X] love.load	This function is called exactly once at the beginning of the game.		
 - [ ] love.mousefocus	Callback function triggered when window receives or loses mouse focus.	0.9.0	
 - [ ] love.mousepressed	Callback function triggered when a mouse button is pressed.		
 - [ ] love.mousereleased	Callback function triggered when a mouse button is released.		
 - [ ] love.quit	Callback function triggered when the game is closed.	0.7.0	
 - [ ] love.resize	Called when the window is resized.	0.9.0	
-- [ ] love.run	The main function, containing the main loop. A sensible default is used when left out.		
+- [-] love.run	The main function, containing the main loop. A sensible default is used when left out.		
 - [ ] love.textinput	Called when text has been entered by the user.	0.9.0	
 - [ ] love.threaderror	Callback function triggered when a Thread encounters an error.	0.9.0	
-- [ ] love.update	Callback function used to update the state of the game every frame.		
+- [X] love.update	Callback function used to update the state of the game every frame.		
 - [ ] love.visible	Callback function triggered when window is shown or hidden.	0.9.0	
-- [ ] Joystick
-- [ ] 
 - [ ] love.gamepadaxis	Called when a Joystick's virtual gamepad axis is moved.	0.9.0	
 - [ ] love.gamepadpressed	Called when a Joystick's virtual gamepad button is pressed.	0.9.0	
 - [ ] love.gamepadreleased	Called when a Joystick's virtual gamepad button is released.	0.9.0	
@@ -49,8 +47,6 @@
 *Enums*
 - [X] Event	Arguments to love.event.push() and the like.
 
-
-
 * [4%] love.graphics
 *Types*
 - [ ] Canvas	Off-screen render target.	0.8.0	
@@ -71,7 +67,6 @@
 - [ ] love.graphics.circle	Draws a circle.		
 - [ ] love.graphics.clear	Clears the screen to background color.		
 - [X] love.graphics.draw	Draws objects on screen.		
-- [ ] love.graphics.drawq	Draw a Quad with the specified Image on screen.		0.9.0
 - [ ] love.graphics.line	Draws lines between points.		
 - [ ] love.graphics.point	Draws a point.		
 - [ ] love.graphics.polygon	Draw a polygon.		
@@ -189,15 +184,14 @@
 - [ ] TextureFormat	Controls the canvas texture format.	0.9.0	
 - [ ] WrapMode	How the image wraps inside a large Quad.
 
-
-* [66%] love.timer
+* [100%] love.timer
 *functions*
-- [ ] love.timer.getAverageDelta	Returns the average delta time over the last second.	0.9.0	
-- [X] love.timer.getDelta	Returns the time between the last two frames.		
-- [X] love.timer.getFPS	Returns the current frames per second.		
-- [X] love.timer.getTime	Returns the amount of time since some time in the past.		
-- [ ] love.timer.sleep	Pauses the current thread for the specified amount of time.		
-- [X] love.timer.step	Measures the time between two frames.
+1) [X] love.timer.getAverageDelta	Returns the average delta time over the last second.	0.9.0	
+2) [X] love.timer.getDelta	Returns the time between the last two frames.		
+3) [X] love.timer.getFPS	Returns the current frames per second.		
+4) [X] love.timer.getTime	Returns the amount of time since some time in the past.		
+5) [X] love.timer.sleep	Pauses the current thread for the specified amount of time.		
+6) [X] love.timer.step	Measures the time between two frames.
 
 * [0%] love.window
 *Functions*

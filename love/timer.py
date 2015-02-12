@@ -28,7 +28,7 @@ dt = 0
 def init():
     global currTime, prevFpsUpdate
     
-#Init the SDL timer system (needed for SDL_Delay.)
+    #Init the SDL timer system (needed for SDL_Delay.)
     if sdl.InitSubSystem(sdl.INIT_TIMER) < 0:
         print (sdl.GetError())
         
@@ -54,7 +54,7 @@ def getTime():
 
 def sleep(seconds):
     if seconds > 0:
-        sdl.delay(seconds*1000)
+        sdl.delay(int(seconds*1000))
         
 
 def step():

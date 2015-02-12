@@ -3,75 +3,89 @@ import love.graphics
 import love.timer
 import love.window
 
-images = []
-rot = 0
-
 
 handlers = {}
 def create_handlers():
-    print ("creating handlers")
     handlers["keypressed"] = keypressed
     handlers["keyreleased"] = keyreleased
-
+    handlers["focus"] = focus
+    handlers["mousefocus"] = mousefocus
+    handlers["mousepressed"] = mousepressed
+    handlers["mouserelease"] = mousereleased
+    handlers["resize"] = resize
+    handlers["visible"] = visible
+    handlers["joystickpressed"] = joystickpressed
+    handlers["joystickreleased"] = joystickreleased
+    handlers["joystickaxis"] = joystickaxis
+    handlers["joystickhat"] = joystickhat
     
-# General Calbacks
-
+    
+# General Callbacks
 def draw():
-    #draw default love2d screen
-    love.graphics.clear()
-    love.graphics.draw(images[0], None, 50, 50, rot)
+    pass
 
 def errhand():
     pass
 
-def focus():
+def focus(windowID, b, c, d):
     pass
 
 def init():
     '''
-    create default settings
-    load love modules
+    create default settings if they don't exist
     load conf file
     create window - DONE
     create event handlers(callbacks) - DONE
-    setup timestep
+    setup timestep - DONE
     version check
     '''
+    
+    #create love callback handlers
     love.create_handlers()
-    print (love.handlers)
+    
+    #create window
     love.window.set_mode(600,480,0)
+
+    #enter main loop
     run()
     
 def keypressed(*args):
     print ("pressed", args[0])
 
+    
 def keyreleased(*args):
     if args[0] == "escape":
         print ("quiting")
         close()
 #        love.event.quit()
 
+
 def load():
-    images.append(love.graphics.newImage("ship.png"))
-    print (images[0].getType())
     pass
+
 
 def mousefocus():
     pass
 
+
 def mousepressed():
     pass
 
+
+
 def mousereleased():
     pass
+
 
 def close():
     #replacement for love.quit avoiding reserved keyword
     exit()
     pass
 
+
 def resize():
     pass
+
 
 def run():
     running = True
@@ -101,7 +115,6 @@ def run():
             love.event.pump()
 
             for message in love.event.poll():
-                print (message, message.name)
                 if message.name == "quit":
                     running = False
                     if not love.quit or not love.quit():
@@ -128,10 +141,10 @@ def run():
             if love.draw:
                 love.draw()
             love.graphics.present()
-'''
+
         if love.timer:
-            love.timer.sleep(0.001)
-'''            
+            love.timer.sleep(0.0001)
+
                 
 def textinput():
     pass
@@ -140,10 +153,8 @@ def threaderror():
     pass
 
 def update(dt):
-    global rot
-    rot = rot + (2 * dt)
-    print (rot)
-    
+    pass
+
 def visible():
     pass
 
