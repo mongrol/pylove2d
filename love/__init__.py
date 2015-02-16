@@ -11,7 +11,7 @@ def create_handlers():
     handlers["focus"] = focus
     handlers["mousefocus"] = mousefocus
     handlers["mousepressed"] = mousepressed
-    handlers["mouserelease"] = mousereleased
+    handlers["mousereleased"] = mousereleased
     handlers["resize"] = resize
     handlers["visible"] = visible
     handlers["joystickpressed"] = joystickpressed
@@ -49,12 +49,13 @@ def init():
     #enter main loop
     run()
     
-def keypressed(*args):
-    print ("pressed", args[0])
+def keypressed(a, b=None, c=None, d=None):
+    print ("pressed", a)
 
     
-def keyreleased(*args):
-    if args[0] == "escape":
+def keyreleased(a, b=None, c=None, d=None):
+    print ("released", a)
+    if a == "escape":
         print ("quiting")
         close()
 #        love.event.quit()
@@ -64,16 +65,14 @@ def load():
     pass
 
 
-def mousefocus():
+def mousefocus(a, b=None, c=None, d=None):
     pass
 
 
-def mousepressed():
+def mousepressed(x, y, button, d=None):
     pass
 
-
-
-def mousereleased():
+def mousereleased(x, y, button, d=None):
     pass
 
 
@@ -83,8 +82,9 @@ def close():
     pass
 
 
-def resize():
+def resize(w, h, c=None, d=None):
     pass
+#    print ("Window resized to ",w, h)
 
 
 def run():
@@ -155,12 +155,11 @@ def threaderror():
 def update(dt):
     pass
 
-def visible():
+def visible(a, b=None, c=None, d=None):
     pass
 
 
 # Joystick Callbacks
-
 def gamepadaxis():
     pass
 

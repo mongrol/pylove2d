@@ -1,5 +1,5 @@
 
-* [20%] Love
+* [37%] Love
 *Types*
 - [X] Data	The superclass of all data.		
 - [X] Object	The superclass of all LÖVE types.
@@ -12,16 +12,16 @@
 - [-] love.keypressed	Callback function triggered when a key is pressed.		
 - [-] love.keyreleased	Callback function triggered when a key is released.		
 - [X] love.load	This function is called exactly once at the beginning of the game.		
-- [ ] love.mousefocus	Callback function triggered when window receives or loses mouse focus.	0.9.0	
-- [ ] love.mousepressed	Callback function triggered when a mouse button is pressed.		
-- [ ] love.mousereleased	Callback function triggered when a mouse button is released.		
+- [X] love.mousefocus	Callback function triggered when window receives or loses mouse focus.	0.9.0	
+- [X] love.mousepressed	Callback function triggered when a mouse button is pressed.		
+- [X] love.mousereleased	Callback function triggered when a mouse button is released.		
 - [ ] love.quit	Callback function triggered when the game is closed.	0.7.0	
-- [ ] love.resize	Called when the window is resized.	0.9.0	
+- [X] love.resize	Called when the window is resized.	0.9.0	
 - [-] love.run	The main function, containing the main loop. A sensible default is used when left out.		
 - [ ] love.textinput	Called when text has been entered by the user.	0.9.0	
 - [ ] love.threaderror	Callback function triggered when a Thread encounters an error.	0.9.0	
 - [X] love.update	Callback function used to update the state of the game every frame.		
-- [ ] love.visible	Callback function triggered when window is shown or hidden.	0.9.0	
+- [X] love.visible	Callback function triggered when window is shown or hidden.	0.9.0	
 - [ ] love.gamepadaxis	Called when a Joystick's virtual gamepad axis is moved.	0.9.0	
 - [ ] love.gamepadpressed	Called when a Joystick's virtual gamepad button is pressed.	0.9.0	
 - [ ] love.gamepadreleased	Called when a Joystick's virtual gamepad button is released.	0.9.0	
@@ -43,9 +43,8 @@
 - [X] love.event.push	Adds an event to the event queue.		
 - [ ] love.event.quit	Exits the LÖVE program.	0.8.0	
 - [ ] love.event.wait	Like love.event.poll(), but blocks until there is an event in the queue.
+For event status see callbacks
 
-*Enums*
-- [X] Event	Arguments to love.event.push() and the like.
 
 * [4%] love.graphics
 *Types*

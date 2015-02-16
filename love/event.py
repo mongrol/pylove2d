@@ -31,24 +31,59 @@ def pump():
     sdl_event = sdl.Event()
     while (sdl.pollEvent(sdl_event)):
         msg = Message()
-#        ("sdl_event.type: ", sdl_event.type)
+
         if sdl_event.type == sdl.KEYDOWN:
-            keyname = sdl.getKeyName(sdl_event.key.keysym.sym)
-            msg = convert(sdl_event)
-            print ("Keypressed", keyname)
+            msg.name = "keypressed"
+            keys = getKeyMap()
+            msg.a = keys[sdl_event.key.keysym.sym]
+
         if sdl_event.type == sdl.KEYUP:
-            keyname = sdl.getKeyName(sdl_event.key.keysym.sym)
-            msg = convert(sdl_event)
+            msg.name = "keyreleased"
+            keys = getKeyMap()
+            msg.a = keys[sdl_event.key.keysym.sym]
+
         if sdl_event.type == sdl.WINDOWEVENT:
             if sdl_event.window.event == sdl.WINDOWEVENT_FOCUS_GAINED:
                 msg.name = "focus"
                 msg.a = sdl_event.window.windowID
-                print ("window focus event")
+            elif sdl_event.window.event == sdl.WINDOWEVENT_RESIZED:
+                msg.name = "resize"
+                msg.a = sdl_event.window.data1
+                msg.b = sdl_event.window.data2
+            elif sdl_event.window.event == sdl.WINDOWEVENT_SHOWN:
+                msg.name = "visible"
+                msg.a = True
+            elif sdl_event.window.event == sdl.WINDOWEVENT_HIDDEN:
+                msg.name = "visible"
+                msg.a = False
+            elif sdl_event.window.event == sdl.WINDOWEVENT_ENTER:
+                msg.name = "mousefocus"
+                msg.a = True
+            elif sdl_event.window.event == sdl.WINDOWEVENT_LEAVE:
+                msg.name = "mousefocus"
+                msg.a = False
+        
+        if sdl_event.type == sdl.MOUSEBUTTONDOWN:
+            msg.name = "mousepressed"
+            buttons = getMouseMap()
+            msg.a = sdl_event.button.x
+            msg.b = sdl_event.button.y
+            msg.c = buttons[sdl_event.button.button]
+
+        if sdl_event.type == sdl.MOUSEBUTTONUP:
+            msg.name = "mousereleased"
+            buttons = getMouseMap()
+            msg.a = sdl_event.button.x
+            msg.b = sdl_event.button.y
+            msg.c = buttons[sdl_event.button.button]
+
         queue.append(msg)
+
 
 def push():
     #pushes message onto queue
     pass
+
 
 def quit():
     #quit event to the queue
@@ -56,26 +91,13 @@ def quit():
     msg.name = "quit"
     queue.append(msg)
 
+
 def wait():
     #wait on input before proceeding
     pass
 
-def convert(event):
-    #converts SDL events into love
-    msg = Message()
-    #print (event.type)
-    if event.type == sdl.KEYDOWN:
-        msg.name = "keypressed"
-        keys = createKeyMap()
-        msg.a = keys[event.key.keysym.sym]
-    elif event.type == sdl.KEYUP:
-        msg.name = "keyreleased"
-        keys = createKeyMap()
-        msg.a = keys[event.key.keysym.sym]
-    return msg
 
-def createKeyMap():
-    #	using love::keyboard::Keyboard;
+def getKeyMap():
 
     k = {}
     k[sdl.K_RETURN] = "return"
@@ -286,5 +308,13 @@ def createKeyMap():
 	k[sdl.K_SLEEP] = Keyboard::KEY_SLEEP
 '''
 
+def getMouseMap():
 
+    m = {}
+    m[sdl.BUTTON_LEFT] = "l"
+    m[sdl.BUTTON_MIDDLE] = "m"
+    m[sdl.BUTTON_RIGHT] = "r"
+    m[sdl.BUTTON_X1] = "x1"
+    m[sdl.BUTTON_X2] = "x2"
 
+    return m

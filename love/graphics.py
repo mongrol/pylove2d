@@ -38,8 +38,9 @@ def newImage( filename ):
     return img
 
 
-def newQuad():
+def newQuad(x, y, width, height, sw, sh):
     quad = Quad()
+    quad.setViewport(x, y, width, height)
     return quad
 
 

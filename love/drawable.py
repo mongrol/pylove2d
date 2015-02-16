@@ -34,9 +34,13 @@ class Image(Texture):
 
 class Quad(Object):
     _type = "Quad"
+    _x, _y, _w, _h, sw, sh = 0, 0, 1, 1, 1, 1
     
     def getViewport(self):
-        pass
-    def setViewport(self):
-        pass
+        return self._x, self._y, self._w, self._h
+    def setViewport(self, x, y, w, h):
+        self._x = x
+        self._y = y
+        self._w = w
+        self._h = h
     
