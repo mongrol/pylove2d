@@ -34,7 +34,7 @@ class Image(Texture):
 
 class Quad(Object):
     _type = "Quad"
-    _x, _y, _w, _h, sw, sh = 0, 0, 1, 1, 1, 1
+    _x, _y, _w, _h, _sw, _sh = 0, 0, 1, 1, 1, 1
     
     def getViewport(self):
         return self._x, self._y, self._w, self._h

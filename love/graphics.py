@@ -18,7 +18,12 @@ def clear():
 
 
 def draw(image, quad=None, x=0, y=0, r=0, sx=1, sy=1, ox=0, oy=0):
-    src_rect = sdl.Rect((0,0,image.getWidth(), image.getHeight()))
+
+    if quad == None:
+        src_rect = sdl.Rect((0,0,image.getWidth(), image.getHeight()))
+    else:
+        src_rect = quadToRect(quad)
+        
     dest_rect = sdl.Rect((x,y,image.getWidth() * sx,
                           image.getHeight() * sy))
     center = sdl.Point((ox, oy))
@@ -26,7 +31,7 @@ def draw(image, quad=None, x=0, y=0, r=0, sx=1, sy=1, ox=0, oy=0):
     sdl.renderCopyEx(love.window.renderer, image._texture, src_rect,
                      dest_rect, angle, center, 0)
 
-
+    
 def newImage( filename ):
     img = Image()
     surface = sdl.image.load(filename)
@@ -40,6 +45,8 @@ def newImage( filename ):
 
 def newQuad(x, y, width, height, sw, sh):
     quad = Quad()
+    quad._sw = sw
+    quad._sh = sh
     quad.setViewport(x, y, width, height)
     return quad
 
@@ -51,6 +58,10 @@ def present():
     sdl.renderPresent(love.window.renderer)
 
 
+def quadToRect(quad):
+    rect = sdl.Rect((quad._x, quad._y, quad._w, quad._h))
+    return rect
+    
 def setBackgroundColor(r, g, b, alpha=0):
     #TODO : alpha
     
