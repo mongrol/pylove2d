@@ -19,13 +19,20 @@ def clear():
 
 def draw(image, quad=None, x=0, y=0, r=0, sx=1, sy=1, ox=0, oy=0):
 
+    iw = image.getWidth()
+    ih = image.getHeight()
+    sw = quad._sw
+    sh = quad._sh
     if quad == None:
-        src_rect = sdl.Rect((0,0,image.getWidth(), image.getHeight()))
+        src_rect = sdl.Rect((0, 0,iw, ih))
     else:
-        src_rect = quadToRect(quad)
+        scale_x = sw / iw
+        scale_y = sh / ih
+        src_rect = sdl.Rect((0, 0, int(quad._w * scale_x),
+                             int(quad._h * scale_y)))
         
-    dest_rect = sdl.Rect((x,y,image.getWidth() * sx,
-                          image.getHeight() * sy))
+    dest_rect = sdl.Rect((x,y,src_rect.w * sx,
+                          src_rect.h * sy))
     center = sdl.Point((ox, oy))
     angle = math.degrees(r)
     sdl.renderCopyEx(love.window.renderer, image._texture, src_rect,
@@ -58,10 +65,6 @@ def present():
     sdl.renderPresent(love.window.renderer)
 
 
-def quadToRect(quad):
-    rect = sdl.Rect((quad._x, quad._y, quad._w, quad._h))
-    return rect
-    
 def setBackgroundColor(r, g, b, alpha=0):
     #TODO : alpha
     

@@ -41,7 +41,7 @@
 - [X] love.event.poll	Returns an iterator for messages in the event queue.		
 - [X] love.event.pump	Pump events into the event queue.		
 - [X] love.event.push	Adds an event to the event queue.		
-- [ ] love.event.quit	Exits the LÖVE program.	0.8.0	
+2- [ ] love.event.quit	Exits the LÖVE program.	0.8.0	
 - [ ] love.event.wait	Like love.event.poll(), but blocks until there is an event in the queue.
 For event status see callbacks
 

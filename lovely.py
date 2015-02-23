@@ -11,7 +11,7 @@ myQuad = None
 def load():
     global myQuad
     images.append(love.graphics.newImage("ship.png"))
-    myQuad = love.graphics.newQuad(0, 0, 8, 8, 21, 16)
+    myQuad = love.graphics.newQuad(0, 0, 21, 16, 21, 16)
 
 def update(dt):
     global rot
