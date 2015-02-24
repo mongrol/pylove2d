@@ -1,5 +1,8 @@
+import time
+
 import love.event
 import love.graphics
+import love.math
 import love.timer
 import love.window
 
@@ -89,11 +92,9 @@ def resize(w, h, c=None, d=None):
 
 def run():
     running = True
-    '''
-    if love.math then
-        love.math.setRandomSeed(os.time())
-    end
-    '''
+
+    if love.math:
+        love.math.setRandomSeed(time.time())
 
     love.load()
 

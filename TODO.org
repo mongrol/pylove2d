@@ -46,7 +46,7 @@
 For event status see callbacks
 
 
-* [4%] love.graphics
+* [5%] love.graphics
 *Types*
 - [ ] Canvas	Off-screen render target.	0.8.0	
 - [X] Drawable	Superclass for all things that can be drawn on screen.		
@@ -85,7 +85,7 @@ For event status see callbacks
 - [ ] love.graphics.newMesh	Creates a new Mesh.	0.9.0	
 - [ ] love.graphics.newParticleSystem	Creates a new ParticleSystem.		
 - [ ] love.graphics.newPixelEffect	Creates a new PixelEffect.	0.8.0	0.9.0
-- [ ] love.graphics.newQuad	Creates a new Quad.		
+- [X] love.graphics.newQuad	Creates a new Quad.		
 - [ ] love.graphics.newScreenshot	Creates a screenshot and returns the ImageData.		
 - [ ] love.graphics.newShader	Creates a new Shader.	0.9.0	
 - [ ] love.graphics.newSpriteBatch	Creates a new SpriteBatch.		
@@ -216,3 +216,27 @@ For event status see callbacks
 
 *Enums*
 - [ ] FullscreenType	Types of fullscreen modes.
+
+* [7%] love.math
+*Types*
+- [ ] BezierCurve	A Bézier curve object that can evaluate and render Bézier curves of arbitrary degree.	Added since 0.9.0	
+- [-] RandomGenerator	A random number generation object which has its own random state.	Added since 0.9.0	
+  - [X] getSeed	Gets the seed of the random number generator.	Added since 0.9.0	
+  - [ ] getState	Gets the current state of the random number generator.	Added since 0.9.1	
+  - [ ] random	Generates a pseudo random number in a platform independent way.	Added since 0.9.0	
+  - [ ] randomNormal	Get a normally distributed pseudo random number.	Added since 0.9.0	
+  - [X] setSeed	Sets the seed of the random number generator.	Added since 0.9.0	
+  - [ ] setState	Sets the current state of the random number generator.
+
+*Functions*
+- [ ] love.math.gammaToLinear	Converts a color from gamma-space (sRGB) to linear-space (RGB).	Added since 0.9.1	
+- [ ] love.math.getRandomSeed	Gets the seed of the random number generator.	Added since 0.9.0	
+- [ ] love.math.isConvex	Checks whether a polygon is convex.	Added since 0.9.0	
+- [ ] love.math.linearToGamma	Converts a color from linear-space (RGB) to gamma-space (RGB).	Added since 0.9.1	
+- [ ] love.math.newBezierCurve	Creates a new BezierCurve object.	Added since 0.9.0	
+- [ ] love.math.newRandomGenerator	Creates a new RandomGenerator object.	Added since 0.9.0	
+- [ ] love.math.noise	Generates a Simplex noise value in 1-4 dimensions.	Added since 0.9.0	
+- [ ] love.math.random	Get uniformly distributed pseudo random number	Added since 0.9.0	
+- [ ] love.math.randomNormal	Get a normally distributed pseudo random number.	Added since 0.9.0	
+- [X] love.math.setRandomSeed	Sets the seed of the random number generator.	Added since 0.9.0	
+- [ ] love.math.triangulate	Decomposes a simple polygon into triangles.
