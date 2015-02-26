@@ -6,13 +6,13 @@ from love.drawable import Quad
 import love
 
 #graphics module globals
-backgroundColor = [0, 0, 0]
-
+backgroundColor = [0, 0, 0, 0]
+drawColor = [0, 0, 0, 0]
 
 def clear():
     global backgroundColor
-    r,g,b= backgroundColor
-    sdl.setRenderDrawColor (love.window.renderer, r, g, b, 0);
+    r, g, b, a= backgroundColor
+    sdl.setRenderDrawColor (love.window.renderer, r, g, b, a);
     sdl.renderClear(love.window.renderer)
     pass
 
@@ -38,6 +38,7 @@ def draw(image, quad=None, x=0, y=0, r=0, sx=1, sy=1, ox=0, oy=0):
     sdl.renderCopyEx(love.window.renderer, image._texture, src_rect,
                      dest_rect, angle, center, 0)
 
+#Creation
     
 def newImage( filename ):
     img = Image()
@@ -65,9 +66,37 @@ def present():
     sdl.renderPresent(love.window.renderer)
 
 
-def setBackgroundColor(r, g, b, alpha=0):
-    #TODO : alpha
-    
-    global backgroundColor
-    backgroundColor = [r, g, b]
 
+#Drawing
+
+def line(x1, y1, x2, y2):
+#    print(sdl.getRenderDrawColor(love.window.renderer))
+    r, g, b, a = drawColor
+    sdl.setRenderDrawColor(love.window.renderer, r, g, b, a)
+    sdl.renderDrawLine(love.window.renderer, x1, y1, x2, y2)
+
+def point(x, y):
+    r, g, b, a = drawColor
+    sdl.setRenderDrawColor(love.window.renderer, r, g, b, a)
+    sdl.renderDrawPoint(love.window.renderer, x, y)
+
+def rectangle(mode, x, y, w, h):
+    r, g, b, a = drawColor
+    sdl.setRenderDrawColor(love.window.renderer, r, g, b, a)
+    rect = sdl.Rect((x, y, w, h))
+    if mode == "fill":
+        sdl.renderFillRect(love.window.renderer, rect)
+    if mode == "line":
+        sdl.renderDrawRect(love.window.renderer, rect)
+    
+    
+#state
+
+def setBackgroundColor(r, g, b, a=0):
+    global backgroundColor
+    backgroundColor = [r, g, b, a]
+
+
+def setColor(r, g, b, a):
+    global drawColor
+    drawColor = [r, g, b, a]

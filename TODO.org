@@ -46,7 +46,7 @@
 For event status see callbacks
 
 
-* [5%] love.graphics
+* [9%] love.graphics
 *Types*
 - [ ] Canvas	Off-screen render target.	0.8.0	
 - [X] Drawable	Superclass for all things that can be drawn on screen.		
@@ -66,14 +66,14 @@ For event status see callbacks
 - [ ] love.graphics.circle	Draws a circle.		
 - [ ] love.graphics.clear	Clears the screen to background color.		
 - [X] love.graphics.draw	Draws objects on screen.		
-- [ ] love.graphics.line	Draws lines between points.		
-- [ ] love.graphics.point	Draws a point.		
+- [X] love.graphics.line	Draws lines between points.		
+- [X] love.graphics.point	Draws a point.		
 - [ ] love.graphics.polygon	Draw a polygon.		
 - [ ] love.graphics.present	Displays the results of drawing operations on the screen.		
 - [ ] love.graphics.print	Draws text on screen. If no Font is set, one will be created and set (once) if needed.		
 - [ ] love.graphics.printf	Draws formatted text, with word wrap and alignment.		
 - [ ] love.graphics.quad	Draws a quadrilateral shape.		0.9.0
-- [ ] love.graphics.rectangle	Draws a rectangle.		
+- [X] love.graphics.rectangle	Draws a rectangle.		
 - [ ] love.graphics.triangle	Draws a triangle.
 
 *Object Creation*
@@ -118,10 +118,10 @@ For event status see callbacks
 - [ ] love.graphics.isSupported	Checks for the support of graphics related functions.	0.8.0	
 - [ ] love.graphics.isWireframe	Gets whether wireframe mode is used when drawing.	0.9.1	
 - [ ] love.graphics.reset	Resets the current graphics settings.		
-- [ ] love.graphics.setBackgroundColor	Sets the background color.		
+- [X] love.graphics.setBackgroundColor	Sets the background color.		
 - [ ] love.graphics.setBlendMode	Sets the blending mode.	0.2.0	
 - [ ] love.graphics.setCanvas	Captures drawing operations to a Canvas	0.8.0	
-- [ ] love.graphics.setColor	Sets the color used for drawing.		
+- [X] love.graphics.setColor	Sets the color used for drawing.		
 - [ ] love.graphics.setColorMask	Sets the color mask. Enables or disables specific color components when rendering.	0.9.0	
 - [ ] love.graphics.setColorMode	Sets the color mode (which controls how images are affected by the current color).	0.2.0	0.9.0
 - [ ] love.graphics.setDefaultFilter	Sets the default scaling filters used with Images, Canvases, and Fonts.	0.9.0	
