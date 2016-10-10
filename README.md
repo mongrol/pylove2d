@@ -14,7 +14,7 @@ NOTE: This is not an official Love2d project.
 
 ## Status ##
 
-pylove2d is under heavy development. The TODO.org file has status of the
+pylove2d is halted in this repo. The STATUS.org file has status of the
 various modules currently underway. If a module is not listed, it hasn't
 been started yet.
 
